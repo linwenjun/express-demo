@@ -26,7 +26,7 @@ pipeline {
         stage('standard') {
             steps {
                 sh 'ls express-demo'
-                sh 'ls checkout-answer'
+                sh 'ls concourse-k8s-project'
             }
         }
     }
