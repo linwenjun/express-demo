@@ -5,39 +5,27 @@ pipeline {
         NameSpace='linwenjun'
     }
 
-    triggers {
-        pollSCM('* * * * *')
-    }
-
     stages {
 
-        stage('checkout') {
+        stage('checkout-repo') {
             steps {
-                git poll: true, url: 'https://github.com/linwenjun/express-demo.git', branch: 'master'
+                dir('express-demo') {
+                    git url: 'https://github.com/linwenjun/express-demo.git', branch: 'master'
+                }
+            }
+        }
+
+        stage('checkout-answer') {
+            steps {
+                dir('concourse-k8s-project') {
+                    git url: 'https://github.com/tws-training/concourse-k8s-project.git', branch: 'master'
+                }
             }
         }
 
         stage('standard') {
             steps {
-                bat 'echo test'
-            }
-        }
-
-        stage('test') {
-            steps {
-                bat 'echo test'
-            }
-        }
-
-        stage('install dependencies') {
-            steps {
-                bat 'echo install'
-            }
-        }
-
-        stage('deploy') {
-            steps {
-                bat 'echo deploy'
+                sh 'find . -maxdepth 2 -type d -exec ls -ld "{}" \;'
             }
         }
     }
