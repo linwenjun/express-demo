@@ -25,7 +25,8 @@ pipeline {
 
         stage('standard') {
             steps {
-                sh 'find . -maxdepth 2 -type d -exec ls -ld "{}" \;'
+                sh 'ls express-demo'
+                sh 'ls checkout-answer'
             }
         }
     }
