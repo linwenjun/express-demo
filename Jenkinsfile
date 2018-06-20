@@ -25,7 +25,10 @@ pipeline {
 
         stage('standard') {
             steps {
-                sh 'exit 0'
+                if( $VALUE1 == $VALUE2 ) {
+                    currentBuild.result = 'SUCCESS'
+                    return
+                }
             }
         }
 
