@@ -23,13 +23,9 @@ pipeline {
             }
         }
 
-        stage('standard') {
-            steps {
-                if( $VALUE1 == $VALUE2 ) {
-                    currentBuild.result = 'SUCCESS'
-                    return
-                }
-            }
+        if( 1 == 1 ) {
+            currentBuild.result = 'SUCCESS'
+            return
         }
 
         stage('standard-2') {
