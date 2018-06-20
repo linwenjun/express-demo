@@ -29,7 +29,7 @@ pipeline {
             }
         }
 
-        stage('standard') {
+        stage('standard-2') {
             steps {
                 sh 'ls express-demo'
                 sh 'ls concourse-k8s-project'
